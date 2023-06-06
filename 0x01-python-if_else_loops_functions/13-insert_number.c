@@ -4,7 +4,7 @@
  * @head: pointer to pointer of first node
  * @number: new number to be inserted
  * Return: new node adress
-*/
+ */
 
 listint_t *insert_node(listint_t **head, int number)
 {
@@ -15,20 +15,35 @@ listint_t *insert_node(listint_t **head, int number)
 	if (new == NULL)
 		return (NULL);
 	new->n = number;
+	new->next = NULL;
 	current = *head;
-	while (current->next != NULL)
+	if (current == NULL)
 	{
-		if (current->n < number && current->next->n < number)
+		*head = new;
+		return (new);
+	}
+	while (current != NULL)
+	{
+		if (current->next == NULL)
 		{
-			current = current->next;
-			ctr++;
+			new->next = NULL;
+			current->next = new;
+			return (new);
 		}
-		else if (current->n < number && current->next->n > number)
+		if (number < current->n  && number < current->next->n)
+		{
+			new->next = current;
+			*head = new;
+			return (new);
+		}
+		else if (current->n < number && current->next->n >= number)
 		{
 			new->next = current->next;
 			current->next = new;
 			break;
 		}
+		current = current->next;
+		ctr++;
 	}
 	return (new);
 }
