@@ -12,5 +12,3 @@ def element_at(my_list, idx):
     else:
         a = my_list[idx:idx+1]
         return a[0]
-my_list = [1, 3, 5 , 7, 9]
-print(element_at(my_list, 4))
