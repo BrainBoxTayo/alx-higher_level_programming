@@ -10,7 +10,3 @@ def replace_in_list(my_list, idx, element):
     else:
         my_list[idx] = element
         return my_list
-
-list2 = [1, 2, 3, 5]
-replace_in_list(list2, -2, 20)
-print(list2)
