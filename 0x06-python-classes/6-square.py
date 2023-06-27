@@ -44,7 +44,7 @@ class Square:
                     print(the_space, end="")
                 for j in range(0, self.__size):
                     print(square_char, end="")
-                print()
+                print("")
 
     @property
     def position(self):
