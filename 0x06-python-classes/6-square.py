@@ -39,7 +39,7 @@ class Square:
             print()
         else:
             if self.__position[1] > 0:
-                the_space = " "
+                the_space = ""
             for i in range(0, self.__size):
                 for k in range(0, self.__position[0]):
                     print(the_space, end="")
