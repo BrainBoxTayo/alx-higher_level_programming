@@ -2,5 +2,5 @@
 """Defines a Class of type square"""
 class Square:
 
-    """Empty Class Square"""    
+    """Empty Class Squaroirpgjrogjrwpoge"""    
     pass
