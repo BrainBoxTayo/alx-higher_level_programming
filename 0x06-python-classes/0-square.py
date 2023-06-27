@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-"""Define a square Class"""
+"""Defines a Class of type square"""
 class Square:
 
-    """Square Class"""    
+    """Empty Class Square"""    
     pass
