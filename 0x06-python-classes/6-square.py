@@ -48,7 +48,7 @@ class Square:
 
     @property
     def position(self):
-        """Position is a tuple of 2 ints"""
+        """Position Getter"""
         return self.__position
 
     @position.setter
