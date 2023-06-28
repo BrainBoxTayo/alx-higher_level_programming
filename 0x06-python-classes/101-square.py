@@ -69,7 +69,7 @@ class Square:
         else:
             for i in range(0, self.__size):
                 for k in range(0, self.__position[0]):
-                    sub_print += " " 
+                    sub_print += " "
                 for j in range(0, self.__size):
                     sub_print += "#"
                 printable.append(sub_print)
