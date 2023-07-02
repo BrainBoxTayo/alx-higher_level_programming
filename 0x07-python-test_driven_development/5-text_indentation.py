@@ -1,5 +1,16 @@
 #!/usr/bin/python3
+'''
+replace all . ? : with 2 new lines
+'''
+
+
 def text_indentation(text):
+    '''
+    Args:
+        text: string to be manipulated
+    Returns:
+        Nothing
+    '''
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     i = 0
@@ -11,5 +22,3 @@ def text_indentation(text):
             continue
         new_text += text[i]
     print(new_text, end="")
-
-
