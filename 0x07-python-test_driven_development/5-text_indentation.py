@@ -14,11 +14,16 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     i = 0
-    new_text = ""
-    for i in range(0, len(text)):
-        if text[i] == '.' or text[i] == '?' or text[i] == ':':
-            new_text += text[i]
-            new_text += '\n\n'
+    while i < len(text) and text[i] == ' ':
+        # handles spaces at beginning of text
+        i += 1
+    while i < len(text):
+        print(text[i], end="")
+        if text[i] == ' ' or text[i] in '.?:':
+            if text[i] == '.' or text[i] == '?' or text[i] == ':':
+                print("\n\n", end="")
+            i += 1
+            while i < len(text) and text[i] == ' ':
+                i += 1
             continue
-        new_text += text[i]
-    print(new_text, end="")
+        i += 1
