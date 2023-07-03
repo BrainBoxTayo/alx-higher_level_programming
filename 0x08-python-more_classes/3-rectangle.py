@@ -20,7 +20,10 @@ class Rectangle:
         self.height = height
 
     def __str__(self):
-       return '\n'.join(['#' * self.width for i in range(self.height)])
+        if self.width == 0 or self.height == 0:
+            return ""
+        return '\n'.join(['#' * self.width for i in range(self.height)])
+
     @property
     def width(self):
         return self.__width
