@@ -16,7 +16,7 @@ class Rectangle:
         perimeter: returns the perimeter of the rectangle
     """
     number_of_instances = 0
-    print_symbol = [1, 2, 3]
+    print_symbol = '#'
 
     # the Underscores
     def __init__(self, width=0, height=0):
