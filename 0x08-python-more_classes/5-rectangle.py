@@ -28,7 +28,7 @@ class Rectangle:
         return ('Rectangle(' + str(self.width) + ', ' + str(self.height) + ')')
 
     def __del__(self):
-        print("Bye Rectangle...")
+        print("Bye rectangle...")
 
     @property
     def width(self):
