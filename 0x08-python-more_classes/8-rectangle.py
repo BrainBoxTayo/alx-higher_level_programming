@@ -11,7 +11,7 @@ class Rectangle:
         __width: instance attribute
         __height: instance attribute
         number_of_instances: the number of instances of class Rectangle
-        print_symbol: symbol to print the string
+        print_symbol: symbol to print the string in
     methods:
         area: returns area of the rectangle
         perimeter: returns the perimeter of the rectangle
@@ -66,6 +66,17 @@ class Rectangle:
         if height < 0:
             raise ValueError("height must be >= 0")
         self.__height = height
+    
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if (rect_1.area() == rect_2.area()):
+            return rect_1
+        else:
+            return (rect_1 if (rect_1.area() > rect_2.area()) else rect_2)
 
     # methods to calculate stuff
     def area(self):
