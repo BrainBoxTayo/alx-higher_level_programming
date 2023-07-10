@@ -5,6 +5,7 @@ inheritance learning file
 
 
 class MyList(list):
+    """Class that inherits from list"""
     def print_sorted(self):
         lsi = self[:]
         n = len(lsi)
