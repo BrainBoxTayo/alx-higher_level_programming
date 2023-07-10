@@ -36,11 +36,17 @@ class Rectangle(BaseGeometry):
     def __repr__(self):
         """repr to return a string on print"""
         return ("[Rectangle] {}/{}".format(self.__width, self.__height))
-    
+
+
 class Square(Rectangle):
+    """The class for a square"""
+
     def __init__(self, size):
+        """Initializer for the square"""
         super().__init__(size, size)
         self.integer_validator("size", size)
         self.__size = size
+
     def area(self):
+        """The area function"""
         return self.__size ** 2
