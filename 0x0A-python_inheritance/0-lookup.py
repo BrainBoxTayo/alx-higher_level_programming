@@ -5,5 +5,5 @@
 
 
 def lookup(obj):
-    """the functon that does the stuff"""
+    """"Return a list of an object's available attributes."""
     return (dir(obj))
