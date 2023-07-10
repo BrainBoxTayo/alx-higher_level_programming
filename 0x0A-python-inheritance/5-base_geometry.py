@@ -4,6 +4,6 @@ Class BaseGeometry
 """
 
 
-def BaseGeometry():
+class BaseGeometry:
     """The base geometry class"""
     pass
