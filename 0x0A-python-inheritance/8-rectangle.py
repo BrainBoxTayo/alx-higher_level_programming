@@ -2,8 +2,10 @@
 """The rectangle subclass of the BaseGeometry class"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
     """class for rectangles"""
+
     def __init__(self, width, height):
         """initializes a new rectangle"""
         self.integer_validator("width", width)
