@@ -5,6 +5,7 @@ Module foe Tech Interview Prep
 
 
 def pascal_triangle(n):
+    '''pascal's triangle function'''
     if n <= 0:
         return []
     if n == 1:
