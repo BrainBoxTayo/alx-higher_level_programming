@@ -16,7 +16,7 @@ class Student:
     def to_json(self, attrs=None):
         '''same as 8-class_to_json'''
         dicts = {}
-        if attrs:
+        if type(attrs) == list:
             for j in attrs:
                 if hasattr(self, j):
                     dicts[j] = getattr(self, j)
