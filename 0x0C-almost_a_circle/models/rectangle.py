@@ -26,12 +26,21 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-    def update(self, *args):
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
+
+    def update(self, *args, **kwargs):
         names = list(vars(self))
         i = 0
-        for arg in args:
-            setattr(self, names[i], arg)
-            i += 1
+        if args and len(args) > 0:
+            for arg in args:
+                setattr(self, names[i], arg)
+                i += 1
+            return
+        else:
+            for name, value in kwargs.items():
+                setattr(self, name, value)
 
     @property
     def width(self):
@@ -85,10 +94,6 @@ class Rectangle(Base):
             for j in range(self.width):
                 print('#', end="")
             print()
-
-    def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
-                                                       self.width, self.height)
 
     def __type_checker(self, input, string):
         if type(input) is not int:
