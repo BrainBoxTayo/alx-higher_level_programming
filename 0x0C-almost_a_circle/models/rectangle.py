@@ -16,6 +16,7 @@ class Rectangle(Base):
             __zero_checker
             area
             display: print visual representation of the rectangle
+            update: assigns an argument to each attribute (updates an instance)
     '''
 
     def __init__(self, width, height,  x=0, y=0, id=None):
@@ -24,6 +25,13 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
+
+    def update(self, *args):
+        names = list(vars(self))
+        i = 0
+        for arg in args:
+            setattr(self, names[i], arg)
+            i += 1
 
     @property
     def width(self):
