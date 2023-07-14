@@ -2,19 +2,24 @@
 '''
 Rectangle Class
 '''
+from __future__ import annotations
 from base import Base
 
 
 class Rectangle(Base):
-    ''' The rectangle class defines a rectangle
+    '''
+    The rectangle class defines a rectangle
         Attributes:
-            Width
-            Height
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+            x (int): x coordinate of the rectangle
+            y (int): y coordinate of the rectangle
+            id (int): id of the rectangle
         Methods:
             Getters and setters for width and height
-            __type__checker
-            __zero_checker
-            area
+            __type__checker: checks if the input is an integer
+            __zero_checker: checks if the input is greater than 0
+            area: returns the area of the rectangle
             display: print visual representation of the rectangle
             update: assigns an argument to each attribute (updates an instance)
     '''
@@ -104,3 +109,7 @@ class Rectangle(Base):
             raise ValueError("{} must be > 0".format(string))
         if input < 0 and (string == 'x' or string == 'y'):
             raise ValueError("{} must be >= 0".format(string))
+
+    def to_dictionary(self):
+        return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height,
+                'width': self.width}
