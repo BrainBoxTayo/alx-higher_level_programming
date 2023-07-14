@@ -124,5 +124,7 @@ from base import Base
 # print(type(json_dictionary))
 r1 = Rectangle(10, 7, 2, 8)
 r2 = Square(2, 4)
-Rectangle.save_to_file([r1, r2])
+r3 = Rectangle(1,2,3,4)
+r4 = Square(1,2,3)
+Rectangle.save_to_file([r1, r2, r3, r4])
 
