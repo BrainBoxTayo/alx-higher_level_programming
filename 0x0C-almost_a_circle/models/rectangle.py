@@ -1,0 +1,93 @@
+#!/usr/bin/python3
+'''
+Rectangle Class
+'''
+from base import Base
+
+
+class Rectangle(Base):
+    ''' The rectangle class defines a rectangle
+        Attributes:
+            Width
+            Height
+        Methods:
+            Getters and setters for width and height
+            __type__checker
+            __zero_checker
+            area
+            display: print visual representation of the rectangle
+    '''
+
+    def __init__(self, width, height,  x=0, y=0, id=None):
+        super().__init__(id)
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, width):
+        self.__type_checker(width, "width")
+        self.__zero_checker(width, "width")
+        self.__width = width
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, height):
+        self.__type_checker(height, "height")
+        self.__zero_checker(height, 'height')
+        self.__height = height
+
+    @property
+    def x(self):
+        return self.__x
+
+    @x.setter
+    def x(self, x):
+        self.__type_checker(x, 'x')
+        self.__zero_checker(x, 'x')
+        self.__x = x
+
+    @property
+    def y(self):
+        return self.__y
+
+    @y.setter
+    def y(self, y):
+        self.__type_checker(y, 'y')
+        self.__zero_checker(y, 'y')
+        self.__y = y
+
+    def area(self):
+        return (self.width * self.height)
+
+    def display(self):
+        for space_y in range(self.y):
+            print()
+        for i in range(self.height):
+            for space_x in range(self.x):
+                print(' ', end="")
+            for j in range(self.width):
+                print('#', end="")
+            print()
+
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
+
+    def __type_checker(self, input, string):
+        if type(input) is not int:
+            raise TypeError("{} must be an integer".format(string))
+
+    def __zero_checker(self, input, string):
+        if input <= 0 and (string == "width" or string == "height"):
+            raise ValueError("{} must be > 0".format(string))
+        if input < 0 and (string == 'x' or string == 'y'):
+            raise ValueError("{} must be >= 0".format(string))
