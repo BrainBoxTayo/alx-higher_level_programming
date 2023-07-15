@@ -43,22 +43,48 @@ class Base:
             return []
         else:
             return json.loads(json_string)
-        
+    
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        turtle.penup()
+        for shape in list_rectangles:
+            turtle.setpos(shape.x, shape.y)
+            turtle.pendown()
+            turtle.fd(shape.width)
+            turtle.lt(90.0)
+            turtle.back(shape.height)
+            turtle.rt(90.0)
+            turtle.back(shape.width)
+            turtle.lt(90.0)
+            turtle.fd(shape.height)
+            turtle.penup()
+        for shape in list_squares:
+            turtle.setpos(shape.x, shape.y)
+            turtle.pendown()
+            turtle.fd(shape.width)
+            turtle.lt(90.0)
+            turtle.back(shape.height)
+            turtle.rt(90.0)
+            turtle.back(shape.width)
+            turtle.lt(90.0)
+            turtle.fd(shape.height)
+            turtle.penup()
+        turtle.done()
     @classmethod
     def save_to_file_csv(cls, list_objs):
         filename = cls.__name__ + '.csv'
         with open(filename, 'w', newline='') as f:
             if list_objs is None or list_objs == []:
-               f.write("[]")
+                f.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
-                   fields = ['id', 'width', 'height', 'x', 'y']
+                    fields = ['id', 'width', 'height', 'x', 'y']
                 else:
-                   fields = ['id', 'size', 'x', 'y']
+                    fields = ['id', 'size', 'x', 'y']
                 writer = csv.DictWriter(f, fieldnames=fields)
                 for obj in list_objs:
-                   writer.writerow(obj.to_dictionary())
-    
+                    writer.writerow(obj.to_dictionary())
+
     @classmethod
     def load_from_file_csv(cls):
         filename = cls.__name__ + '.csv'
@@ -75,7 +101,6 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
- 
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -116,3 +141,4 @@ class Base:
                 return list_of_instance
         except FileNotFoundError:
             return ([])
+    
