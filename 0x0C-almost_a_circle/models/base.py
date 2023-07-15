@@ -6,7 +6,15 @@ import json
 
 
 class Base:
-    '''Goal is to manage the id attribute'''
+    '''
+    Base Class for 
+    Attributes:
+        id (int): id of the object
+    Methods:
+        __init__(self, id=None): initializes the id
+        to_json_string(list_dictionaries): returns the JSON string representation of list_dictionaries
+        save_to_file(cls, list_objs): writes the JSON string representation to a file
+    '''    
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -30,9 +38,6 @@ class Base:
         __square_string = ""
         list_of_dicts_rect = []
         list_of_dicts_square = []
-        filename = []
-        for i in range(len(list_objs)):
-            filename.append("{}".format(list_objs[i].__class__.__name__))
         for obj in list_objs:
             if isinstance(obj, Rectangle) and type(obj) is Rectangle:
                 list_of_dicts_rect.append(obj.to_dictionary())
