@@ -43,7 +43,7 @@ class Base:
             return []
         else:
             return json.loads(json_string)
-    
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         turtle.penup()
@@ -70,6 +70,7 @@ class Base:
             turtle.fd(shape.height)
             turtle.penup()
         turtle.done()
+
     @classmethod
     def save_to_file_csv(cls, list_objs):
         filename = cls.__name__ + '.csv'
@@ -103,24 +104,13 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        from models.rectangle import Rectangle
-        from models.square import Square
-
-        __rect_string = ""
-        __square_string = ""
-        list_of_dicts_rect = []
-        list_of_dicts_square = []
-        for obj in list_objs:
-            if isinstance(obj, Rectangle) and type(obj) is Rectangle:
-                list_of_dicts_rect.append(obj.to_dictionary())
-            elif isinstance(obj, Square) and type(obj) is Square:
-                list_of_dicts_square.append(obj.to_dictionary())
-        __rect_string += cls.to_json_string(list_of_dicts_rect)
-        __square_string += cls.to_json_string(list_of_dicts_square)
-        with open("Rectangle.json", 'w') as f:
-            f.write(__rect_string)
-        with open("Square.json", 'w') as f:
-            f.write(__square_string)
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @classmethod
     def create(cls, **dictionary):
@@ -140,4 +130,3 @@ class Base:
                 return list_of_instance
         except FileNotFoundError:
             return ([])
-    

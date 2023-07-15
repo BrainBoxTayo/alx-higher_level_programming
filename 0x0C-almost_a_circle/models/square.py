@@ -39,20 +39,35 @@ class Square(Rectangle):
         self.__size = size
 
     def update(self, *args, **kwargs):
-        names = list(vars(self))
-        i = 0
         if args and len(args) > 0:
+            i = 0
             for arg in args:
-                setattr(self, names[i], arg)
-                if i == 1:
-                    i += 1
-                if i == 4:
-                    return
+                if i == 0:
+                    if arg is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif i == 1:
+                    self.size = arg
+                elif i == 2:
+                    self.x = arg
+                elif i == 3:
+                    self.y = arg
                 i += 1
-            return
-        else:
-            for name, value in kwargs.items():
-                setattr(self, name, value)
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "size":
+                    self.size = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
 
     def to_dictionary(self):
         return {'x': self.x, 'y': self.y, 'id': self.id, 'size': self.size}
