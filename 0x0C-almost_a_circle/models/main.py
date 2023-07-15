@@ -122,9 +122,47 @@ from base import Base
 # print(type(dictionary))
 # print(json_dictionary)
 # print(type(json_dictionary))
-r1 = Rectangle(10, 7, 2, 8)
-r2 = Square(2, 4)
-r3 = Rectangle(1,2,3,4)
-r4 = Square(1,2,3)
-Rectangle.save_to_file([r1, r2, r3, r4])
+# r1 = Rectangle(10, 7, 2, 8)
+# r2 = Square(2, 4)
+# r3 = Rectangle(1,2,3,4)
+# r4 = Square(1,2,3)
+# Rectangle.save_to_file([r1, r2, r3, r4])
+# list_input = [
+#         {'id': 89, 'width': 10, 'height': 4}, 
+#         {'id': 7, 'width': 1, 'height': 7}
+# ]
+# json_list_input = Rectangle.to_json_string(list_input)
+# list_output = Rectangle.from_json_string(json_list_input)
+# print("[{}] {}".format(type(list_input), list_input))
+# print("[{}] {}".format(type(json_list_input), json_list_input))
+# print("[{}] {}".format(type(list_output), list_output))
+# r1 = Square(3, 5, 1)
+# r1_dictionary = r1.to_dictionary()
+# r2 = Square.create(**r1_dictionary)
+# print(r1)
+# print(r2)
+# print(r1 is r2)
+# print(r1 == r2)
 
+r1 = Rectangle(10, 7, 2, 8)
+r2 = Rectangle(2, 4)
+list_rectangles_input = [r1, r2]
+Rectangle.save_to_file(list_rectangles_input)
+list_rectangles_output = Rectangle.load_from_file()
+for rect in list_rectangles_input:
+    print("[{}] {}".format(id(rect), rect))
+print("---")
+for rect in list_rectangles_output:
+    print("[{}] {}".format(id(rect), rect))
+print("---")
+print("---")
+s1 = Square(5)
+s2 = Square(7, 9, 1)
+list_squares_input = [s1, s2]
+Square.save_to_file(list_squares_input)
+list_squares_output = Square.load_from_file()
+for square in list_squares_input:
+    print("[{}] {}".format(id(square), square))
+print("---")
+for square in list_squares_output:
+    print("[{}] {}".format(id(square), square))

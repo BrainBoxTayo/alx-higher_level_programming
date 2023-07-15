@@ -2,7 +2,6 @@
 '''
 class Square
 '''
-from __future__ import annotations
 from rectangle import Rectangle
 
 

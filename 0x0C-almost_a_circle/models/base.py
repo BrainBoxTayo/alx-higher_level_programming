@@ -23,11 +23,19 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
-
+    
+    @staticmethod
     def to_json_string(list_dictionaries):
         if list_dictionaries is None or len(list_dictionaries) == 0:
-            return []
+            return "[]"
         return (json.dumps(list_dictionaries))
+
+    @staticmethod
+    def from_json_string(json_string):
+        if json_string is None or json_string == "":
+            return []
+        else:
+            return json.loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -49,3 +57,22 @@ class Base:
             f.write(__rect_string)
         with open("Square.json", 'w') as f:
             f.write(__square_string)
+        
+    @classmethod
+    def create(cls, **dictionary):
+        dummy = cls(1, 1)
+        dummy.update(**dictionary)
+        return dummy
+    
+    @classmethod
+    def load_from_file(cls):
+        try:
+            with open("{}.json".format(cls.__name__)) as f:
+                list_of_instance = []
+                list_of_dicts = cls.from_json_string(f.read())
+                for dicts in list_of_dicts:
+                    new_instance = cls.create(**dicts)
+                    list_of_instance.append(new_instance)
+                return list_of_instance
+        except FileNotFoundError:
+            return ([])
