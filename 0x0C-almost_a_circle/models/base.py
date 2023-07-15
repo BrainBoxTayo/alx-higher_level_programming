@@ -7,14 +7,19 @@ import json
 
 class Base:
     '''
-    Base Class for 
+    Base Class for
     Attributes:
         id (int): id of the object
     Methods:
         __init__(self, id=None): initializes the id
-        to_json_string(list_dictionaries): returns the JSON string representation of list_dictionaries
-        save_to_file(cls, list_objs): writes the JSON string representation to a file
-    '''    
+        to_json_string(list_dictionaries): returns the JSON representation
+        save_to_file(cls, list_objs): writes the JSON representation to a
+                                    file
+        from_json_string(json_string): returns the objects of the JSON string
+        create(cls, **dictionary): returns an instance with all
+                                    attributes already set
+        load_from_file(cls): returns a list of instances
+    '''
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -23,7 +28,7 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
-    
+
     @staticmethod
     def to_json_string(list_dictionaries):
         if list_dictionaries is None or len(list_dictionaries) == 0:
@@ -57,13 +62,13 @@ class Base:
             f.write(__rect_string)
         with open("Square.json", 'w') as f:
             f.write(__square_string)
-        
+
     @classmethod
     def create(cls, **dictionary):
         dummy = cls(1, 1)
         dummy.update(**dictionary)
         return dummy
-    
+
     @classmethod
     def load_from_file(cls):
         try:
