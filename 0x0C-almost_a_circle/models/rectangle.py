@@ -39,6 +39,8 @@ class Rectangle(Base):
         i = 0
         if args and len(args) > 0:
             for arg in args:
+                self.__type_checker(arg, name[i])
+                self.__zero_checker(arg, names[i])
                 setattr(self, names[i], arg)
                 i += 1
             return

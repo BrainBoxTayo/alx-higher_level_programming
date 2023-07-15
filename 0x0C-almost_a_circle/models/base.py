@@ -90,7 +90,6 @@ class Base:
         filename = cls.__name__ + '.csv'
         try:
             with open(filename, 'r', newline='') as f:
-                reader = csv.reader(f)
                 if cls.__name__ == "Rectangle":
                     fields = ['id', 'width', 'height', 'x', 'y']
                 else:
@@ -104,8 +103,8 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        from rectangle import Rectangle
-        from square import Square
+        from models.rectangle import Rectangle
+        from models.square import Square
 
         __rect_string = ""
         __square_string = ""
