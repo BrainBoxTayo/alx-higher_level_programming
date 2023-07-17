@@ -22,6 +22,7 @@ class Base:
                                     attributes already set
         load_from_file(cls): returns a list of instances
     '''
+
     __nb_objects = 0
 
     def __init__(self, id=None):
