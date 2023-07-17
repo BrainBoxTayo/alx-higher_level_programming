@@ -25,6 +25,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """Initializes the id"""
         if id is not None:
             self.id = id
         else:
@@ -33,12 +34,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """Returns the JSON string representation of list_dictionaries"""
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return (json.dumps(list_dictionaries))
 
     @staticmethod
     def from_json_string(json_string):
+        """Returns the list of the JSON string representation json_string"""
         if json_string is None or json_string == "":
             return []
         else:
@@ -46,6 +49,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """Opens a window and draws all the Rectangles and Squares"""
         turtle.penup()
         for shape in list_rectangles:
             turtle.setpos(shape.x, shape.y)
@@ -73,6 +77,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """Writes the CSV string representation of list_objs to a file"""
         filename = cls.__name__ + '.csv'
         with open(filename, 'w', newline='') as f:
             if list_objs is None or list_objs == []:
@@ -88,6 +93,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """Returns a list of instances"""
         filename = cls.__name__ + '.csv'
         try:
             with open(filename, 'r', newline='') as f:
@@ -104,6 +110,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """Writes the JSON string representation of list_objs to a file"""
         filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
@@ -114,12 +121,14 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """Returns an instance with all attributes already set"""
         dummy = cls(1, 1)
         dummy.update(**dictionary)
         return dummy
 
     @classmethod
     def load_from_file(cls):
+        """Returns a list of instances"""
         try:
             with open("{}.json".format(cls.__name__)) as f:
                 list_of_instance = []

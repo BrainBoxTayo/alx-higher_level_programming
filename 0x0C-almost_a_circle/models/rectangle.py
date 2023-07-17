@@ -24,6 +24,7 @@ class Rectangle(Base):
     '''
 
     def __init__(self, width, height,  x=0, y=0, id=None):
+        """Initializes the rectangle class"""
         super().__init__(id)
         self.width = width
         self.height = height
@@ -31,10 +32,12 @@ class Rectangle(Base):
         self.y = y
 
     def __str__(self):
+        """Returns the string representation of the rectangle"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
                                                        self.width, self.height)
 
     def update(self, *args, **kwargs):
+        """Updates the rectangle class"""
         names = list(vars(self))
         i = 0
         if args and len(args) > 0:
@@ -72,48 +75,58 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """Returns the width of the rectangle"""
         return self.__width
 
     @width.setter
     def width(self, width):
+        """Sets the width of the rectangle"""
         self.__type_checker(width, "width")
         self.__zero_checker(width, "width")
         self.__width = width
 
     @property
     def height(self):
+        """Returns the height of the rectangle"""
         return self.__height
 
     @height.setter
     def height(self, height):
+        """ Sets the height of the rectangle"""
         self.__type_checker(height, "height")
         self.__zero_checker(height, 'height')
         self.__height = height
 
     @property
     def x(self):
+        """Returns the x coordinate of the rectangle"""
         return self.__x
 
     @x.setter
     def x(self, x):
+        """Sets the x coordinate of the rectangle"""
         self.__type_checker(x, 'x')
         self.__zero_checker(x, 'x')
         self.__x = x
 
     @property
     def y(self):
+        """Returns the y coordinate of the rectangle"""
         return self.__y
 
     @y.setter
     def y(self, y):
+        """Sets the y coordinate of the rectangle"""
         self.__type_checker(y, 'y')
         self.__zero_checker(y, 'y')
         self.__y = y
 
     def area(self):
+        """Returns the area of the rectangle"""
         return (self.width * self.height)
 
     def display(self):
+        """Prints the rectangle using #"""
         for space_y in range(self.y):
             print()
         for i in range(self.height):
@@ -124,15 +137,18 @@ class Rectangle(Base):
             print()
 
     def __type_checker(self, input, string):
+        """Checks if the input is an integer"""
         if type(input) is not int:
             raise TypeError("{} must be an integer".format(string))
 
     def __zero_checker(self, input, string):
+        """Checks if the input is greater than 0"""
         if input <= 0 and (string == "width" or string == "height"):
             raise ValueError("{} must be > 0".format(string))
         if input < 0 and (string == 'x' or string == 'y'):
             raise ValueError("{} must be >= 0".format(string))
 
     def to_dictionary(self):
+        """Returns the dictionary representation of the rectangle"""
         return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height,
                 'width': self.width}

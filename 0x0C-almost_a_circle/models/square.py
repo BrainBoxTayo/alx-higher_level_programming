@@ -21,6 +21,7 @@ class Square(Rectangle):
     '''
 
     def __init__(self, size, x=0, y=0, id=None):
+        """Initializes a Square object"""
         super().__init__(size, size, x, y, id)
         self.size = size
 
@@ -30,15 +31,18 @@ class Square(Rectangle):
 
     @property
     def size(self):
+        """Returns the size of the square"""
         return self.__size
 
     @size.setter
     def size(self, size):
+        """Sets the size of the square"""
         self.width = size
         self.height = size
         self.__size = size
 
     def update(self, *args, **kwargs):
+        """ Updates the attributes of the Square object"""
         if args and len(args) > 0:
             i = 0
             for arg in args:
@@ -70,4 +74,5 @@ class Square(Rectangle):
                     self.y = v
 
     def to_dictionary(self):
+        """Returns the dictionary representation of a Square"""
         return {'x': self.x, 'y': self.y, 'id': self.id, 'size': self.size}
