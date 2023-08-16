@@ -1,3 +1,4 @@
+-- cities of california
 SELECT cities.id, cities.name
 FROM cities, states
 WHERE cities.state_id = (SELECT id FROM states WHERE name = 'California')
