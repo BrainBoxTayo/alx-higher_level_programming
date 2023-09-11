@@ -1,6 +1,6 @@
 #!/usr/bin/node
 let num = '';
-if (process.argv.length > 2) {
+if (process.argv.length > 2 && (typeof process.argv[2][0] !== 'undefined')) {
   num = process.argv[2][0].charCodeAt(0);
 }
 if (num >= 48 && num <= 57) {
