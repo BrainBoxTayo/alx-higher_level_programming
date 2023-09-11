@@ -8,6 +8,8 @@ if (num >= 48 && num <= 57) {
   for (let i = 0; i < num; i++) {
     console.log('C is fun');
   }
+} else if (num === 45) {
+  process.exit(0);
 } else {
   console.log('Missing number of occurrences');
 }
